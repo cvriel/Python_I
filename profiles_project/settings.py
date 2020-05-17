@@ -117,6 +117,15 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework.authentication.TokenAuthentication",
+    ),
+    "DEFAULT_PERMISSION_CLASSES": (
+        "profiles_api.permissions.UpdateOwnStatus",
+        "rest_framework.permissions.IsAuthenticatedOrReadOnly",
+    ),
+}
+
 AUTH_USER_MODEL = "profiles_api.UserProfile"
 APPEND_SLASH = False
-
